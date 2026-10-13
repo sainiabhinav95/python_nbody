@@ -1,0 +1,6 @@
+implementation,secs,speedup
+C++,2.21,1x
+Pure Python,152.82859774,69.15x
+Python + Numpy,660,298.64x
+Python + Numpy + Numba,2.828913,1.28x
+Python + Numpy + Numba (FastMath),2.446399,1.11x
