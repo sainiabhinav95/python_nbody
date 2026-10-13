@@ -39,11 +39,11 @@ The following values are sample benchmark results from the project and are inten
 
 | Implementation | Time (s) | Factor |
 | --- | ---: | ---: |
-| C++ | 2.04 | 1.00x |
+| C++ | 1.15 | 1.00x |
 | Pure Python | 105.08 | 90x |
 | Python + NumPy | 660 | 574x |
-| Python + NumPy + Numba | 2.012984 | 1.74x |
-| Python + NumPy + Numba (Fast Math) | 1.956040 | 1.70x |
+| Python + NumPy + Numba | 2.013 | 1.74x |
+| Python + NumPy + Numba (Fast Math) | 1.95 | 1.70x |
 
 ## System Details
 
