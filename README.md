@@ -11,7 +11,7 @@ Each simulation starts with the Sun and four outer planets, adjusts the Sun's ve
 
 ## Requirements
 
-- Python 3.13 or newer
+- Python 3.14 or newer
 - Dependencies listed in `pyproject.toml`
 - A C++20 compiler for the C++ implementation
 
@@ -40,15 +40,14 @@ The following values are sample benchmark results from the project and are inten
 | Implementation | Time (s) | Factor |
 | --- | ---: | ---: |
 | C++ | 2.04 | 1.00x |
-| Pure Python | 152.83 | 69.15x |
-| Python + NumPy | 660 | 298.64x |
-| Python + NumPy + Numba | 2.828 | 1.28x |
-| Python + NumPy + Numba (Fast Math) | 2.446 | 1.11x |
+| Pure Python | 105.08 | 90x |
+| Python + NumPy | 660 | 574x |
+| Python + NumPy + Numba | 2.012984 | 1.74x |
+| Python + NumPy + Numba (Fast Math) | 1.956040 | 1.70x |
 
 ## System Details
 
-- OS: Linux
-- Python: 3.13.15
-- CPU: Ryzen 5 7500X3D
-- RAM: 32 GB DDR5 6000 Mhz
-- GPU: AMD RX 9070
+- OS: MacOS Tahoe 26.5.2
+- Python: 3.14
+- CPU: Apple M5
+- RAM: 16 GB

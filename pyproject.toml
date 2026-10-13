@@ -3,7 +3,7 @@ name = "python-nbody"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
     "numba>=0.67.0",
     "numpy>=2.5.3",

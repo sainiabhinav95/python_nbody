@@ -73,24 +73,24 @@ PAIRS = np.array(list(combinations(planets_idx.values(), 2)))
 @njit(cache=True, fastmath=True)
 def advance(dt, n, bodies, pairs):
 
-    for i in range(n):
-        for idx1, idx2 in pairs:
-            x1, y1, z1 = bodies[idx1, 0], bodies[idx1, 1], bodies[idx1, 2]
-            x2, y2, z2 = bodies[idx2, 0], bodies[idx2, 1], bodies[idx2, 2]
+    for _ in range(n):
+        for p in pairs:
+            x1, y1, z1 = bodies[p[0], 0], bodies[p[0], 1], bodies[p[0], 2]
+            x2, y2, z2 = bodies[p[1], 0], bodies[p[1], 1], bodies[p[1], 2]
 
             dx = x1 - x2
             dy = y1 - y2
             dz = z1 - z2
             dist_squared = dx * dx + dy * dy + dz * dz
             mag = dt / (dist_squared * sqrt(dist_squared))
-            b1m = bodies[idx1, 6] * mag
-            b2m = bodies[idx2, 6] * mag
-            bodies[idx1, 3] -= dx * b2m
-            bodies[idx1, 4] -= dy * b2m
-            bodies[idx1, 5] -= dz * b2m
-            bodies[idx2, 3] += dx * b1m
-            bodies[idx2, 4] += dy * b1m
-            bodies[idx2, 5] += dz * b1m
+            b1m = bodies[p[0], 6] * mag
+            b2m = bodies[p[1], 6] * mag
+            bodies[p[0], 3] -= dx * b2m
+            bodies[p[0], 4] -= dy * b2m
+            bodies[p[0], 5] -= dz * b2m
+            bodies[p[1], 3] += dx * b1m
+            bodies[p[1], 4] += dy * b1m
+            bodies[p[1], 5] += dz * b1m
         for i in range(len(bodies)):
             bodies[i, 0] += dt * bodies[i, 3]
             bodies[i, 1] += dt * bodies[i, 4]
@@ -99,13 +99,13 @@ def advance(dt, n, bodies, pairs):
 
 def report_energy(bodies=BODIES, pairs=PAIRS, e=0.0):
 
-    for idx1, idx2 in pairs:
-        x1, y1, z1 = bodies[idx1, 0], bodies[idx1, 1], bodies[idx1, 2]
-        x2, y2, z2 = bodies[idx2, 0], bodies[idx2, 1], bodies[idx2, 2]
+    for p in pairs:
+        x1, y1, z1 = bodies[p[0], 0], bodies[p[0], 1], bodies[p[0], 2]
+        x2, y2, z2 = bodies[p[1], 0], bodies[p[1], 1], bodies[p[1], 2]
         dx = x1 - x2
         dy = y1 - y2
         dz = z1 - z2
-        e -= (bodies[idx1, 6] * bodies[idx2, 6]) / (
+        e -= (bodies[p[0], 6] * bodies[p[1], 6]) / (
             (dx * dx + dy * dy + dz * dz) ** 0.5
         )
     for i in range(len(bodies)):
